@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<!-- 
+
+"WEBSHORTCUTS" LICENSE 
+
+   Copyright (C) 2024  Anthony Francisco 
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+	
+    This is free software, and you are welcome to redistribute it
+    under certain conditions, see www.gnu.org/licenses for more details.
+
+UPDATE LOG
+	0.1.0 9/17/2011 Created
+	1.0.0 5/8/2024 Published to Github
+	
+INSTRUCTIONS
+
+BUTTONS, MENUS AND SUBMENUS
+
+The layout of this page is simple. 2 rows, each with 4 buttons. 
+  Clicking on a button will hyperlink you to a webpage that is attached to the button. Ideally these would be the most common websites you go to.
+  Hovering over a button will show you a menu to hyperlink to other websites OR pop up submenus that you can drill down into for more hyperlinks.
+  You can organize and nest the menus/submenus to your liking.
+  This page can contain links local to your internal network so you can use it for internal portals that are not visible on the internet.
+
+CONFIGURATION
+
+Configuration is simple as modifying html.
+
+-- Menus & Links & Tooltips
+  To create menus, you will be using lists and nested lists. I've included a sample nested list in the code below that you can duplicate.<li></li> <ul></ul>
+          <li><a href="#">Menu Item 1</a></li>   In this example, change the # to the desired URL change "Menu Item" to the description of that URL
+  To update tooltips, update the on hover 'tooltip' but modifying the 'title' parameter.
+  
+-- Pictures
+  To update pictures, you can modify the .jpg references to what you have downloaded in your img/ subdirectory.
+
+-- BACKUP!
+  It is advised to make a backup of your html file prior to making modifications to it so you can revert.
+
+-- Organization Name, Your name, Last update
+   The bottom of this page has <div> where you can add your organization's name, your name, and the last date you updated the page.
+   If this is not useful you can delete the entire line or comment it out.
+
+CUSTOMIZATION 
+
+WALLPAPER
+Within the img/ directory, replace "img/wallpaper.gif" with your favorite wallpaper GIF.
+I recommend using google images for wallpaper gifs. There are always cool new ones you can find.  1080 resolution is recommended for most monitors.
+
+BUTTONS
+Within the img/ directory, replace "img/button1", "img/button2.jpg", "img/button3.jpg, etc with your favorite button in .jpg format.
+I recommend finding simple gray icons with 'transparent' backgrounds. You can use google images to find them. There's a filter for transparent "All Types > Transparent"
+I've incuded some sample such as phone, network, lock, etc.
+
+SECURITY and CODE ANECDOTES
+For security reasons, the author has excluded any scripting language on this software. The goal is a simple frontend html page with NO Javascript, NO VBScript, etc.
+The goal is to open the page locally on this machine with or without a network connection. 
+This page is meant to be used for managing inhouse links to your team and NOT to be hosted on the internet.
+
+You are welcome to leave feedback and/or contribute to this project.
+
+-->
+
+<style type="text/css">
+
+body, p, h1, h2, h3, table, td, th, ul, ol, textarea, input, select {  font-family: Calibri; font-size: 14px; font-style: normal; line-height: 17px; color:#000000;}
+
+td {padding:5px}
+
+a:visited, a:link { font-family: Calibri; font-size: 14px; font-style: normal; color: blue; text-decoration: none;  border: 1px solid transparent; }
+
+a:hover {  font-family: Calibri; font-size: 14px; font-style: normal; underline; color: blue; background: #999999}
+
+font.normal {font-weight: normal}
+
+.hoverBright {font-family: Calibri; font-size: 14px; font-style: normal; color: blue; text-decoration: none;  filter: alpha(opacity=80); opacity: .8; }
+
+.hoverBright:hover {font-family: Calibri; font-size: 14px; font-style: normal; color: blue; filter: alpha(opacity=100); opacity: 1; }
+
+h1 {font-size: 26px; color:#999999; text-shadow: 2px 2px #000000;}
+
+#primary_nav_wrap
+{
+	margin-top:15px;
+}
+
+#primary_nav_wrap ul
+{
+	list-style:none;
+	position:relative;
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+#primary_nav_wrap ul a
+{
+	display:block;
+	color:#333;
+	text-decoration:none;
+	font-weight:700;
+	font-size:12px;
+	line-height:32px;
+	padding:5px 5px;
+	font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#primary_nav_wrap ul li
+{
+	position:relative;
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+#primary_nav_wrap ul li.current-menu-item
+{
+	background:#dddddd;
+}
+
+#primary_nav_wrap ul li:hover
+{
+	background:#f6f6f6;
+}
+
+/*  This is the menu item background */
+#primary_nav_wrap ul ul
+{
+	display:none;
+	position:absolute;
+	top:100%;
+	left:0;
+	background:#ffffff;
+	padding:0;
+}
+
+#primary_nav_wrap ul ul li
+{
+	float:none;
+	width:200px;
+}
+
+#primary_nav_wrap ul ul a
+{
+	line-height:120%;
+	padding:10px 15px;
+}
+
+#primary_nav_wrap ul ul ul
+{
+	top:0;
+	left:100%;
+}
+
+#primary_nav_wrap ul li:hover > ul
+{
+	display:block;
+}
+
+#secondary_nav_wrap
+{
+	margin-top:15px;
+}
+
+#secondary_nav_wrap ul
+{
+	list-style:none;
+	position:relative;
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+#secondary_nav_wrap ul a
+{
+	display:block;
+	color:#333;
+	text-decoration:none;
+	font-weight:700;
+	font-size:12px;
+	line-height:32px;
+	padding:5px 5px;
+	font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#secondary_nav_wrap ul li
+{
+	position:relative;
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+#secondary_nav_wrap ul li.current-menu-item
+{
+	background:#dddddd;
+}
+
+#secondary_nav_wrap ul li:hover
+{
+	background:#f6f6f6;
+}
+
+#secondary_nav_wrap ul ul
+{
+	display:none;
+	position:absolute;
+	top:100%;
+	left:0;
+	background:#ffffff;
+	padding:0;
+}
+
+#secondary_nav_wrap ul ul li
+{
+	float:none;
+	width:200px;
+}
+
+#secondary_nav_wrap ul ul a
+{
+	line-height:120%;
+	padding:10px 15px;
+}
+
+#secondary_nav_wrap ul ul ul
+{
+	top:0;
+	left:100%;
+}
+
+#secondary_nav_wrap ul li:hover > ul
+{
+	display:block;
+}
+
+.icon {
+    width: 74px;
+    height: 74px;
+}
+
+/* resize images */
+.icon img {
+    width: 100%;
+    height: auto;
+}
+
+</style>
+
+<html>
+<body background="img/wallpaper.gif">
+
+<table width=350 height=200 align=center>
+<tr>
+<td height="50">
+<h1 align=center>Section Name 1</h1>
+<div class="nav" id="primary_nav_wrap">
+<ul>
+
+<!-- Button 1 -->
+  <li><div class="icon"><a href="#"><img class="hoverBright" src="img/button1.png" border="0" title="Button 1 Tooltip"></a></div>
+    <ul>
+      <li><a href="#">Menu Item 1</a></li>
+	  <li><a href="#">Menu Item 2 >></a>
+	     <ul>
+		 <li><a href="#">Submenu Item 1</a></li>
+		 <li><a href="#">Submenu Item 2 >> </a>
+		   <ul>
+		     <li><a href="#">Subsubmenu Item 1</a></li>
+	       </ul>
+		 </li>
+         </ul>
+	  </li>
+      <li><a href="#">Menu Item 3</a></li>
+      <li><a href="#">Menu Item 4</a></li>
+	</ul>
+  </li>
+
+
+<!-- Button 1 -->
+  <li><div class="icon"><a href="#"><img class="hoverBright" src="img/button2.png" border="0" title="Button 2 Tooltip"></a></div>
+    <ul>
+      <li><a href="#">Menu Item 1</a></li>
+	  <li><a href="#">Menu Item 2</a></li>
+	  <li><a href="#">Menu Item 3</a></li>
+	  <li><a href="#">Menu Item 4</a></li>
+	  </li>
+	</ul>
+  </li>
+  
+<!-- Button 1 -->
+  <li><div class="icon"><a href="#"><img class="hoverBright" src="img/button3.png" border="0" title="Button 3 Tooltip"></a></div>
+    <ul>
+      <li><a href="#">Menu Item 1</a></li>
+	  <li><a href="#">Menu Item 2</a></li>
+	  <li><a href="#">Menu Item 3</a></li>
+	  <li><a href="#">Menu Item 4</a></li>
+	</ul>
+  </li>
+  
+<!-- Button 1 -->
+  <li><div class="icon"><a href="#"><img class="hoverBright" src="img/button4.png" border="0" title="Button 4 Tooltip"></a></div>
+    <ul>
+      <li><a href="#">Menu Item 1</a></li>
+	  <li><a href="#">Menu Item 2</a></li>
+	  <li><a href="#">Menu Item 3</a></li>
+	  <li><a href="#">Menu Item 4</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+
+<table width=350 height=500 align=center>
+<tr>
+<td>
+<h1 align=center>Section Name 2</h1>
+<div style="font-family: Calibri; font-size: 11px; font-style: normal; line-height: 17px; color:#333333;">
+<div class="nav" id="secondary_nav_wrap">
+<ul>
+
+
+<!-- Button 5 -->
+  <li><div class="icon"><a href="#"><img class="hoverBright" src="img/button5.png" border="0" title="Button 5 Tooltip"></a></div>
+    <ul>
+      <li><a href="#">Menu Item 1</a></li>
+	  <li><a href="#">Menu Item 2</a></li>
+	  <li><a href="#">Menu Item 3</a></li>
+	  <li><a href="#">Menu Item 4</a></li>
+    </ul>
+  </li>
+  
+<!-- Button 6 -->
+  <li><div class="icon"><a href="#"><img class="hoverBright" src="img/button6.png" border="0" title="Button 6 Tooltip"></a></div>
+    <ul>
+      <li><a href="#">Menu Item 1</a></li>
+	  <li><a href="#">Menu Item 2</a></li>
+	  <li><a href="#">Menu Item 3</a></li>
+	  <li><a href="#">Menu Item 4</a></li>
+    </ul>
+  </li>
+  
+<!-- Button 7 -->
+  <li><div class="icon"><a href="#"><img class="hoverBright" src="img/button7.png" border="0" title="Button 7 Tooltip"></a></div>
+    <ul>
+      <li><a href="#">Menu Item 1</a></li>
+	  <li><a href="#">Menu Item 2</a></li>
+	  <li><a href="#">Menu Item 3</a></li>
+	  <li><a href="#">Menu Item 4</a></li>
+    </ul>
+  </li>
+  
+<!-- Button 8 -->
+  <li><div class="icon"><a href="#"><img class="hoverBright" src="img/button8.png" border="0" title="Button 8 Tooltip"></a></div>
+    <ul>
+      <li><a href="#">Menu Item 1</a></li>
+	  <li><a href="#">Menu Item 2</a></li>
+	  <li><a href="#">Menu Item 3</a></li>
+	  <li><a href="#">Menu Item 4</a></li>
+    </ul>
+  </li>
+  
+
+</ul>
+</div>
+</div>
+
+<div style="font-family: Calibri; font-size: 11px; font-style: normal; line-height: 17px; color:#999999; position: absolute; bottom: 5px; right: 5px;" align=right>Your Organization's Name<br>Your Name - Date</div>
+
+</body>
+</html>
